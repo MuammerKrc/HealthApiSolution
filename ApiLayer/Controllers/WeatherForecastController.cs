@@ -15,7 +15,8 @@ namespace ApiLayer.Controllers
 
 		public WeatherForecastController(ILogger<WeatherForecastController> logger)
 		{
-			Console.WriteLine("intialCommit");
+			Console.Write("trying commit to development");
+
 			_logger = logger;
 		}
 
