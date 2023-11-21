@@ -14,6 +14,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDataLayerRegistration(builder.Configuration);
+builder.Services.AddAuthorization();
+
+builder.Services.AddIdentityApiEndpoints<AppUser>(opt =>
+{
+	opt.User.RequireUniqueEmail = true;
+	opt.Password.RequireDigit = false;
+	opt.Password.RequireLowercase = false;
+	opt.Password.RequireUppercase = false;
+	opt.Password.RequireNonAlphanumeric = false;
+	opt.Password.RequiredLength = 5;
+	opt.Password.RequiredUniqueChars = 3;
+}).AddEntityFrameworkStores<HealthDbContext>();
 
 var app = builder.Build();
 
@@ -21,7 +33,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
-	app.UseSwaggerUI();
+	app.UseSwaggerUI(x =>
+	{
+		
+	});
 }
 
 app.MapIdentityApi<AppUser>();

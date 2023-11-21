@@ -20,25 +20,9 @@ namespace DataLayer
 			{
 				i.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), opt =>
 				{
-					opt.MigrationsAssembly("DataLayer");
+					opt.MigrationsAssembly("ApiLayer");
 				});
 			});
-			//builder.Services.AddDbContext<HealthDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ApiLayer")));
-			//builder.Services.AddAuthorization();
-
-			//services.AddIdentityApiEndpoints<AppUser,IdentityRole>().AddEntityFrameworkStores<HealthDbContext>();
-			//services.AddIdentity<AppUser, AppRole>(opt =>
-			//{
-			//	opt.User.RequireUniqueEmail = true;
-			//	opt.Password.RequireDigit = false;
-			//	opt.Password.RequireLowercase = false;
-			//	opt.Password.RequireUppercase = false;
-			//	opt.Password.RequireNonAlphanumeric = false;
-			//	opt.Password.RequiredLength = 5;
-			//	opt.Password.RequiredUniqueChars = 3;
-			//}).AddEntityFrameworkStores<HealthDbContext>().AddDefaultTokenProviders();
-
 		}
-		
 	}
 }
